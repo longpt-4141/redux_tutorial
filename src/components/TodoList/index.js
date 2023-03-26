@@ -5,12 +5,15 @@ import { addTodo } from '../../app/actions';
 import {v4 as uuidv4} from 'uuid'
 import { useState } from 'react';
 import { todoListSelector } from '../../app/selectors/todoListSelector';
+import { searchTextSelector } from '../../app/selectors/searchTextSelector';
+import { todoRemainingSelector } from '../../app/selectors/todoRemainingSelector';
 
 export default function TodoList() {
     const [todoName, setTodoName] = useState('');
     const [priority, setPriority] = useState('Medium');
 
-    const todoList = useSelector(todoListSelector)
+    const todoList = useSelector(todoRemainingSelector)
+    // const searchText = useSelector(searchTextSelector)
 
     const dispatch = useDispatch();
 
