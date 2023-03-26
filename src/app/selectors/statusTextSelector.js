@@ -1,0 +1,1 @@
+export const statusTextSelector = state => state.filters.status
