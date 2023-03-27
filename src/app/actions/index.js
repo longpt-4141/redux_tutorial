@@ -5,6 +5,13 @@ export const addTodo = (data) => {
     }
 }
 
+export const changeTodoCompleted = (completed) => {
+    return {
+        type: 'todoList/changeTodoCompleted',
+        payload: completed
+    }
+}
+
 export const searchFilterChange = (text) => {
     return {
         type: 'filters/searchFilterChange',
