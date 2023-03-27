@@ -6,7 +6,7 @@ const { Search } = Input;
 
 export default function Filters() {
     const [searchText, setSearchText] = useState('');
-    const [statusText, setStatusText] = useState('ALL');
+    const [statusText, setStatusText] = useState('All');
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {
