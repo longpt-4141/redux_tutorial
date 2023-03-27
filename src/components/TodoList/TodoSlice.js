@@ -28,6 +28,9 @@ const todoReducer = (state = initState, action) => {
                 ...state,
                 action.payload
                 ]
+        case 'todoList/changeTodoCompleted':
+            const newState = state.map(todo => todo.id === action.payload.id ? {...todo, completed: action.payload.completed} : todo)
+            return newState
         default: 
             return state
     }
