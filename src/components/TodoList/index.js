@@ -44,7 +44,7 @@ export default function TodoList() {
         <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
         {
             todoList.map((todoItem, i) => 
-                <Todo name={todoItem.name} priority={todoItem.priority} key={i} />
+                <Todo name={todoItem.name} priority={todoItem.priority} key={todoItem.id} completed={todoItem.completed}/>
             )
         }
         </Col>
