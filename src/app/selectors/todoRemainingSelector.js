@@ -2,6 +2,7 @@ import { todoListSelector } from "./todoListSelector";
 import { searchTextSelector } from "./searchTextSelector";
 import { createSelector } from "@reduxjs/toolkit";
 import { statusTextSelector } from "./statusTextSelector";
+import { filterPrioritySelector } from "./filterPrioritySelector";
 
 export const todoSeparateByStatusSelector = createSelector(
     todoListSelector,
@@ -20,11 +21,26 @@ export const todoSeparateByStatusSelector = createSelector(
     }
 )
 
+export const todoSeparateByPrioritySelector = createSelector(
+    todoSeparateByStatusSelector,
+    filterPrioritySelector,
+    (todoListAfterSeparateByStatus, priority) => {
+        const todoListAfterFilter = todoListAfterSeparateByStatus.filter((todo) => {
+            return priority.includes(todo.priority)
+        })
+        if(todoListAfterFilter.length <= 0) {
+            return todoListAfterSeparateByStatus
+        }else{
+            return todoListAfterFilter
+        }
+    }
+)
+
 export const todoRemainingSelector = createSelector(
     searchTextSelector,
-    todoSeparateByStatusSelector,
-    (searchText, statusFilterReSult) => {
-        return statusFilterReSult.filter((todo) => {
+    todoSeparateByPrioritySelector,
+    (searchText, todoFilterReSult) => {
+        return todoFilterReSult.filter((todo) => {
             return todo.name.toLowerCase().includes(searchText.toLowerCase());
         })
     }
