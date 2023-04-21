@@ -25,4 +25,11 @@ export const statusFilterChange = (status) => {
         payload: status
     }
 }
+
+export const priorityFilterChange = (priority) => {
+    return {
+        type: 'filters/priorityFilterChange',
+        payload: priority
+    }
+}
 //action creators
